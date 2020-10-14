@@ -31,7 +31,8 @@ namespace EC.Controllers
         public ActionResult Create()
         {
             var roleStore = new RoleStore<IdentityRole>(context: context);
-            var roles = roleStore.Roles.Select((m => new RolesDataSet { Id = m.Id, Role = m.Name })).Select(m => m.Role).ToList();  
+            var roles = roleStore.Roles.Select((m => new RolesDataSet { Id = m.Id, Role = m.Name })).Select(m => m.Role).ToList();
+            Session["User_roles"] = roles; 
             ViewBag.roles = roles; 
             return View(); 
         }

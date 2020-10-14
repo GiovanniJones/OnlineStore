@@ -38,14 +38,14 @@ namespace EC.Roles
             var userMgr = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dBContext));
             var appUser = new ApplicationUser
             {
-                Email = "newell-romario@hotmail.com",
-                UserName = "newell-romario@hotmail.com",
+                Email = "giovanni_jones23@hotmail.com",
+                UserName = "giovanni_jones23@hotmail.com",
             };
 
             IdUserResult = userMgr.Create(appUser, "Pa$$word1");
-            if (IdUserResult.Succeeded && !userMgr.IsInRole(userMgr.FindByEmail("newell-romario@hotmail.com").Id, "Administrator"))
+            if (IdUserResult.Succeeded && !userMgr.IsInRole(userMgr.FindByEmail("giovanni_jones23@hotmail.com").Id, "Administrator"))
             {
-                IdUserResult = userMgr.AddToRole(userMgr.FindByEmail("newell-romario@hotmail.com").Id, "Administrator");
+                IdUserResult = userMgr.AddToRole(userMgr.FindByEmail("giovanni_jones23@hotmail.com").Id, "Administrator");
             }
          
         }

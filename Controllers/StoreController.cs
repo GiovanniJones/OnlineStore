@@ -153,7 +153,7 @@ namespace EC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CheckOut([Bind(Include = "Email,OrderNumber,FirstName,LastName,Date,Phone,Country,Address,CartId")] OrderDetails order)
+        public async Task<ActionResult> CheckOut([Bind(Include = "Email,OrderNumber,FirstName,LastName,Date,Phone,Country,Address,Address2,City, CartId")] OrderDetails order)
         {
 
             if (!ModelState.IsValid)

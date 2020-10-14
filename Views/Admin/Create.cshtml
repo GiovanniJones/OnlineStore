@@ -43,7 +43,8 @@
             @Html.LabelFor(model => model.Roles,  htmlAttributes: new { @class = "control-label col-md-2" })
             <select  name="Roles" class="form-control" data-role="select-dropdown" multiple>
                 @{
-                    foreach (string role in ViewBag.roles)
+                   List<String> roles = (List<String>)Session["User_Roles"]; 
+                    foreach (string role in roles)
                     {
                         <option value="@role">@role</option>
                     }

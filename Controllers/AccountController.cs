@@ -76,7 +76,7 @@ namespace EC.Controllers
                 return View(model);
             }
            
-            if(SignInManager.UserManager.FindByEmail(model.Email).EmailConfirmed == false)
+            if(SignInManager.UserManager.FindByEmail(model.Email) != null && SignInManager.UserManager.FindByEmail(model.Email).EmailConfirmed == false)
               return View(model);
 
 

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.Net.Compilers.3.3.1\build\Microsoft.Net.Compilers.props" Condition="Exists('packages\Microsoft.Net.Compilers.3.3.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -273,6 +274,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Threading.Thread" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -399,11 +401,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\AdminMigration\201911012319455_Initial.cs" />
-    <Compile Include="Migrations\AdminMigration\201911012319455_Initial.Designer.cs">
-      <DependentUpon>201911012319455_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\AdminMigration\Configuration.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -424,6 +421,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010080059037_initial.cs" />
+    <Compile Include="Migrations\202010080059037_initial.Designer.cs">
+      <DependentUpon>202010080059037_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010080106593_products-migration.cs" />
+    <Compile Include="Migrations\202010080106593_products-migration.Designer.cs">
+      <DependentUpon>202010080106593_products-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Models\AddProducts.cs" />
@@ -438,19 +444,6 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Migrations\ProductMigration\201911012325106_ProductModel.cs" />
-    <Compile Include="Migrations\ProductMigration\201911012325106_ProductModel.Designer.cs">
-      <DependentUpon>201911012325106_ProductModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ProductMigration\Configuration.cs" />
-    <Compile Include="Migrations\ProductMigration\201911080159332_CartId.cs" />
-    <Compile Include="Migrations\ProductMigration\201911080159332_CartId.Designer.cs">
-      <DependentUpon>201911080159332_CartId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ProductMigration\201911080502333_Address2.cs" />
-    <Compile Include="Migrations\ProductMigration\201911080502333_Address2.Designer.cs">
-      <DependentUpon>201911080502333_Address2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -465,21 +458,15 @@
     <Content Include="App_Data\DefaultConnection_log.ldf">
       <DependentUpon>DefaultConnection.mdf</DependentUpon>
     </Content>
-    <Content Include="Carousel\cellphone.jpg" />
-    <Content Include="Carousel\bedroom.jpg" />
-    <Content Include="Carousel\black_and_white_rose.jpg" />
-    <Content Include="Carousel\DSC_7645.jpg" />
-    <Content Include="Carousel\fashion coat.jpg" />
-    <Content Include="Carousel\blackcat.jpg" />
-    <Content Include="Carousel\isabella-juskova-SQszo1mP4sk-unsplash.jpg" />
-    <Content Include="Carousel\lady.jpg" />
-    <Content Include="Carousel\black_and_white_lady.jpg" />
-    <Content Include="Carousel\nathan-dumlao-k-oS0iKn0Qg-unsplash.jpg" />
-    <Content Include="Carousel\patrick-brinksma--VTJEOcYT8o-unsplash.jpg" />
-    <Content Include="Carousel\rafael-de-nadai-b0eg-PYGICQ-unsplash.jpg" />
-    <Content Include="Carousel\tianyi-ma-WiONHd_zYI4-unsplash.jpg" />
-    <Content Include="Carousel\toa-heftiba-FV3GConVSss-unsplash.jpg" />
-    <Content Include="Carousel\workplace.jpg" />
+    <Content Include="Carousel\both.jpg" />
+    <Content Include="Carousel\in1.jpg" />
+    <Content Include="Carousel\in2.jpg" />
+    <Content Include="Carousel\in3.jpg" />
+    <Content Include="Carousel\in4.jpg" />
+    <Content Include="Carousel\in5.jpg" />
+    <Content Include="Carousel\iPhone-11-Pro-Max.jpg" />
+    <Content Include="Carousel\iphone11.jpg" />
+    <Content Include="Carousel\logo.jpg" />
     <None Include="Connected Services\ASPSMSX2\configuration91.svcinfo" />
     <None Include="Connected Services\ASPSMSX2\configuration.svcinfo" />
     <Content Include="Connected Services\ASPSMSX2\EC.ASPSMSX2.vouchers.datasource">
@@ -745,17 +732,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\AdminMigration\201911012319455_Initial.resx">
-      <DependentUpon>201911012319455_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010080059037_initial.resx">
+      <DependentUpon>202010080059037_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ProductMigration\201911012325106_ProductModel.resx">
-      <DependentUpon>201911012325106_ProductModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ProductMigration\201911080159332_CartId.resx">
-      <DependentUpon>201911080159332_CartId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ProductMigration\201911080502333_Address2.resx">
-      <DependentUpon>201911080502333_Address2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010080106593_products-migration.resx">
+      <DependentUpon>202010080106593_products-migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -798,6 +779,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Net.Compilers.3.3.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Net.Compilers.3.3.1\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

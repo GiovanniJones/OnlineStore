@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Romario Newell Shopping Site</title>
+    <title>@ViewBag.Title - Shopping Site</title>
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/Scripts/bootstrap")
@@ -32,7 +32,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-        @Html.ActionLink("Romario Newell", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("TECHNO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,7 +67,7 @@
         @RenderBody()
         <hr />
         <footer class="text-white">
-            <p>&copy; @DateTime.Now.Year - Romario Newell</p>
+            <p>&copy; @DateTime.Now.Year - Apple Techno</p>
         </footer>
     </div>
     @RenderSection("scripts", required: false)
