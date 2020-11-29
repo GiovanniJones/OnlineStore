@@ -30,7 +30,7 @@ namespace EC
 
             var apiKey = ConfigurationManager.AppSettings["SGK"];
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("newell-romario@hotmail.com", "Romario Newell");
+            var from = new EmailAddress("giovani_jones23@hotmail.com", "Giovanni Jones");
             var subject = message.Subject; 
             var to = new EmailAddress(message.Destination, "Valued Customer");
             var plainTextContent = message.Body;
